@@ -1,0 +1,371 @@
+/**
+ * Loading Animations & Enhanced UI Effects
+ * 
+ * @package RobloxRefresher
+ * @version 1.0.0
+ */
+
+/* ================================================
+   Enhanced Gradient Spinner
+   ================================================ */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 10, 18, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Animated gradient spinner */
+.spinner-gradient {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        #7CB6FF 90deg,
+        #5A9EE8 180deg,
+        #7CB6FF 270deg,
+        transparent 360deg
+    );
+    animation: spinGradient 1.5s linear infinite;
+    position: relative;
+}
+
+.spinner-gradient::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    background: #070A12;
+    border-radius: 50%;
+}
+
+@keyframes spinGradient {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Progress indicator */
+.loading-progress {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.progress-text {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.progress-steps {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.progress-step {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(124, 182, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    background: #7CB6FF;
+    box-shadow: 0 0 12px rgba(124, 182, 255, 0.6);
+}
+
+.progress-step.completed {
+    background: #29c27f;
+}
+
+/* ================================================
+   Success/Error Animations
+   ================================================ */
+.result-card {
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.result-card.show {
+    animation-name: bounceIn;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-30px);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.result-icon {
+    animation: iconBounce 0.6s ease;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Error shake animation */
+.result-card.error-shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* ================================================
+   Skeleton Loading States
+   ================================================ */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.04) 25%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.04) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-text {
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.skeleton-button {
+    height: 48px;
+    width: 100%;
+}
+
+.skeleton-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+/* ================================================
+   Ripple Effect for Buttons
+   ================================================ */
+.ripple-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ================================================
+   Toast Notification
+   ================================================ */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, #7CB6FF, #5A9EE8);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(124, 182, 255, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10000;
+    animation: toastSlideIn 0.3s ease;
+}
+
+.toast.hiding {
+    animation: toastSlideOut 0.3s ease forwards;
+}
+
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastSlideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+.toast-icon {
+    font-size: 20px;
+}
+
+.toast-message {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* ================================================
+   Fade Transitions
+   ================================================ */
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* ================================================
+   Pulse Animation
+   ================================================ */
+.pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ================================================
+   Input Validation States
+   ================================================ */
+.input-field.valid {
+    border-color: #29c27f !important;
+    box-shadow: 0 0 0 3px rgba(41, 194, 127, 0.1);
+}
+
+.input-field.invalid {
+    border-color: #f05555 !important;
+    box-shadow: 0 0 0 3px rgba(240, 85, 85, 0.1);
+}
+
+.validation-message {
+    margin-top: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.validation-message.success {
+    color: #29c27f;
+}
+
+.validation-message.error {
+    color: #f05555;
+}
+
+/* ================================================
+   Character Counter
+   ================================================ */
+.character-counter {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 6px;
+}
+
+.character-counter.warning {
+    color: #ffab40;
+}
+
+.character-counter.error {
+    color: #f05555;
+}
