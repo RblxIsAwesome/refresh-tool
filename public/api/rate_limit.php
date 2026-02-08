@@ -6,8 +6,8 @@
  */
 
 // Rate limit storage file
-define('RATE_LIMIT_FILE', __DIR__ . '/../../storage/rate_limits.json');
-define('IP_BAN_FILE', __DIR__ . '/../../storage/ip_bans.json');
+define('RATE_LIMIT_FILE', sys_get_temp_dir() . '/rate_limits.json');
+define('IP_BAN_FILE', sys_get_temp_dir() . '/ip_bans.json');
 
 /**
  * Check if IP is banned
