@@ -1,8 +1,0 @@
-[phases.setup]
-nixPkgs = ["php82", "php82Extensions.mbstring", "php82Extensions.curl", "php82Extensions.pdo"]
-
-[phases.install]
-cmds = []
-
-[start]
-cmd = "php -S 0.0.0.0:$PORT -t ."
