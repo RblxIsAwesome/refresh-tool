@@ -97,6 +97,21 @@ class QueueWorker
     
     /**
      * Process a single job
+     * 
+     * NOTE: Cookie encryption uses simple base64 encoding for this demo.
+     * For production, implement proper encryption using openssl_encrypt:
+     * 
+     * Encrypt:
+     *   $key = getenv('ENCRYPTION_KEY'); // 32-byte key
+     *   $iv = random_bytes(16);
+     *   $encrypted = openssl_encrypt($cookie, 'AES-256-CBC', $key, 0, $iv);
+     *   $cookie_encrypted = base64_encode($iv . $encrypted);
+     * 
+     * Decrypt:
+     *   $data = base64_decode($cookie_encrypted);
+     *   $iv = substr($data, 0, 16);
+     *   $encrypted = substr($data, 16);
+     *   $cookie = openssl_decrypt($encrypted, 'AES-256-CBC', $key, 0, $iv);
      */
     private function processJob(array $job): void
     {

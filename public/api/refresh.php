@@ -435,7 +435,7 @@ function logRefreshAttempt($success, $error = null, $userInfo = [], $userData = 
                     $userData['username'] ?? $userInfo['username'] ?? null,
                     $userData['userId'] ?? $userInfo['userId'] ?? null,
                     $userData['robux'] ?? null,
-                    isset($userData['premium']) && str_contains($userData['premium'], 'True') ? 1 : 0,
+                    (isset($userData['premium']) && ($userData['premium'] === true || strpos($userData['premium'], 'True') !== false)) ? 1 : 0,
                     $userData['accountAge'] ?? null,
                     $userData['friends'] ?? null,
                     !empty($userData) ? json_encode($userData) : null

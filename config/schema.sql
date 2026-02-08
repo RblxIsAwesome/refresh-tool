@@ -208,6 +208,9 @@ ORDER BY hour DESC;
 
 -- ================================================
 -- Stored Procedures (Optional but useful)
+-- NOTE: If running via PDO or non-CLI client, execute these
+-- procedures separately after creating tables above.
+-- For MySQL CLI: This script can be run as-is.
 -- ================================================
 
 DELIMITER //
