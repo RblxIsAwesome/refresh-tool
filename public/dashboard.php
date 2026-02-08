@@ -668,7 +668,7 @@ $username = htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8');
             showModal('Refreshing Cookie...', '<p style="text-align:center;color:var(--text-secondary)">Please wait while we refresh your cookie and fetch account details...</p>');
             
             try {
-                const response = await fetch('../api/refresh.php', {
+                const response = await fetch('/api/refresh.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
