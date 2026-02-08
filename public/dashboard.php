@@ -1,4 +1,7 @@
 <?php
+// Start session with long lifetime (30 days)
+ini_set('session.gc_maxlifetime', 2592000);
+session_set_cookie_params(2592000);
 session_start();
 
 if (!isset($_SESSION['discord_user'])) {
@@ -59,14 +62,6 @@ $discriminator = $user['discriminator'] ?? '0';
     .user-info{display:flex;align-items:center;gap:12px}
     .user-avatar{width:42px;height:42px;border-radius:50%;border:2px solid var(--accent);object-fit:cover}
     .user-name{font-size:14px;font-weight:600;color:var(--text);display:none}
-    .logout-btn{
-      padding:8px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);color:var(--text);font-size:13px;font-weight:500;
-      cursor:pointer;transition:all .2s ease;text-decoration:none;display:inline-flex;
-      align-items:center;gap:6px;
-    }
-    .logout-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
-    .logout-btn svg{width:14px;height:14px}
 
     /* Main Card */
     .card{
@@ -184,12 +179,6 @@ $discriminator = $user['discriminator'] ?? '0';
       <div class="user-info">
         <span class="user-name"><?php echo $username; ?></span>
         <img src="<?php echo htmlspecialchars($avatarUrl); ?>" alt="Avatar" class="user-avatar" />
-        <a href="logout.php" class="logout-btn">
-          <svg viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H3zm11 4.414l-4.293 4.293a1 1 0 01-1.414 0L4 7.414 5.414 6l3.293 3.293L13.586 6 15 7.414z" clip-rule="evenodd"/>
-          </svg>
-          Logout
-        </a>
       </div>
     </nav>
 
