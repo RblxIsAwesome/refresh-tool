@@ -1,4 +1,7 @@
 <?php
+// Start session with long lifetime (30 days)
+ini_set('session.gc_maxlifetime', 2592000); // 30 days in seconds
+session_set_cookie_params(2592000); // Cookie lasts 30 days
 session_start();
 
 function parse_env(): array {
@@ -10,7 +13,8 @@ function parse_env(): array {
         ];
     }
     
-    $envFile = __DIR__ . '/env.txt';
+    // ✅ FIXED PATH - looks in config folder
+    $envFile = __DIR__ . '/../config/env.txt';
     if (!is_file($envFile)) return [];
     $vars = parse_ini_file($envFile, false, INI_SCANNER_RAW);
     return is_array($vars) ? $vars : [];
@@ -46,7 +50,7 @@ curl_close($ch);
 $tokenInfo = json_decode($response, true);
 
 if (!isset($tokenInfo['access_token'])) {
-    die('Failed to get access token');
+    die('Failed to get access token from Discord');
 }
 
 $userUrl = 'https://discord.com/api/users/@me';
@@ -62,18 +66,19 @@ curl_close($ch);
 $userData = json_decode($userResponse, true);
 
 if (!isset($userData['id'])) {
-    die('Failed to get user data');
+    die('Failed to get user data from Discord');
 }
 
-// REMOVED: No Discord ID restriction - anyone can login!
-
+// ✅ ALLOW ANYONE TO LOGIN - NO RESTRICTIONS
+// ✅ PERSISTENT SESSION - Lasts 30 days
 $_SESSION['discord_user'] = [
     'id' => $userData['id'],
     'username' => $userData['username'],
     'discriminator' => $userData['discriminator'] ?? '0',
     'avatar' => $userData['avatar'],
     'email' => $userData['email'] ?? null,
-    'login_time' => time()
+    'login_time' => time(),
+    'remember' => true // Flag for persistent session
 ];
 
 header('Location: dashboard.php');
