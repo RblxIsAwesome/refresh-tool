@@ -382,7 +382,7 @@ $authUrl = 'https://discord.com/api/oauth2/authorize?' . http_build_query($authP
                 </div>
 
                 <h2 class="card-title">Login with Discord</h2>
-                <p class="card-desc">Login using Discord OAuth2 to access the refresher tool</p>
+                <p class="card-desc">Login using Discord OAuth2 to access the refresh tool</p>
 
                 <a href="<?php echo htmlspecialchars($authUrl, ENT_QUOTES, 'UTF-8'); ?>" class="btn">
                     <svg viewBox="0 0 71 55" fill="none">
@@ -422,3 +422,4 @@ $authUrl = 'https://discord.com/api/oauth2/authorize?' . http_build_query($authP
     </div>
 </body>
 </html>
+
