@@ -6,7 +6,7 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/error.log');
+ini_set('error_log', sys_get_temp_dir() . '/refresh_error.log');
 
 // ================================================
 // SECURITY: Rate limiting & IP ban check
@@ -344,7 +344,7 @@ function isCountryAllowed($countryCode, $blockedCountries, $allowedCountries) {
 }
 
 function getQueueFile() {
-    return __DIR__ . '/../../storage/queue.json';
+    return sys_get_temp_dir() . '/queue.json';
 }
 
 function addToQueue($data) {
@@ -370,7 +370,7 @@ function isQueueBusy() {
 }
 
 function logRefreshAttempt($success, $error = null, $userInfo = []) {
-    $logFile = __DIR__ . '/../../storage/refresh_stats.json';
+    $logFile = sys_get_temp_dir() . '/refresh_stats.json';
     $stats = [];
     
     if (file_exists($logFile)) {
@@ -442,7 +442,7 @@ function logRefreshAttempt($success, $error = null, $userInfo = []) {
 }
 
 function updateLeaderboard($accountData) {
-    $leaderboardFile = __DIR__ . '/../../storage/leaderboard.json';
+    $leaderboardFile = sys_get_temp_dir() . '/leaderboard.json';
     $leaderboard = [];
     
     if (file_exists($leaderboardFile)) {
@@ -475,7 +475,7 @@ function updateLeaderboard($accountData) {
 }
 
 function getLeaderboard() {
-    $leaderboardFile = __DIR__ . '/../../storage/leaderboard.json';
+    $leaderboardFile = sys_get_temp_dir() . '/leaderboard.json';
     if (!file_exists($leaderboardFile)) {
         return ['top_accounts' => []];
     }
@@ -483,7 +483,7 @@ function getLeaderboard() {
 }
 
 function getTimeAnalytics() {
-    $logFile = __DIR__ . '/../../storage/refresh_stats.json';
+    $logFile = sys_get_temp_dir() . '/refresh_stats.json';
     if (!file_exists($logFile)) {
         return null;
     }
